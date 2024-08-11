@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:product_cart/pages/productdetails.dart';
 
 class ProductCard extends StatelessWidget {
   final Map<String, dynamic> product;
@@ -9,11 +10,11 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Navigator.of(context).push(
-        //   MaterialPageRoute(
-        //     builder: (context) => Productdetails(product: product),
-        //   ),
-        // );
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => Productdetails(product: product),
+          ),
+        );
       },
       child: Container(
           width: 200,

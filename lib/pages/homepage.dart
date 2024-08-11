@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:product_cart/components/ProductCard.dart';
+import 'package:product_cart/components/bottomNavbar.dart';
+import 'package:product_cart/data/dummydata.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -9,34 +11,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final List<Map<String, dynamic>> furnitureMenu = [
-  {
-    'name': 'Modern Sofa',
-    'price': 899.99,
-    'image': 'assets/image1.png',
-    'quantity': 1,
-    'category': 'Living Room',
-    'rating': 4.5,
-  },
-  {
-    'name': 'Wooden Dining Table',
-    'price': 499.99,
-    'image': 'assets/imgage2.png',
-    'quantity': 1,
-    'category': 'Dining Room',
-    'rating': 4.7,
-  },
-  {
-    'name': 'Elegant Coffee Table',
-    'price': 199.99,
-    'image': 'assets/image3.png',
-    'quantity': 1,
-    'category': 'Living Room',
-    'rating': 4.3,
-  },
-];
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -107,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Image(
-                        image: AssetImage('assets/imgage2.png'),
+                        image: AssetImage('assets/image2.png'),
                         height: 150,
                       ),
                     ],
@@ -118,6 +92,19 @@ class _HomeScreenState extends State<HomeScreen> {
             const Padding(
               padding: EdgeInsets.symmetric(vertical: 20.0),
               child: Text('Newest', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            ),
+            SizedBox(
+              height: 325, // Set a fixed height for the ListView
+              child: ListView.builder(
+                itemCount: furnitureMenu.length,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) =>
+                    ProductCard(product: furnitureMenu[index]),
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: 20.0),
+              child: Text('Discover', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             ),
             SizedBox(
               height: 325, // Set a fixed height for the ListView
