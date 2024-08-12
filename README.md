@@ -35,14 +35,14 @@ This Flutter application allows users to browse a list of products, view product
 - **Testing:** Basic unit and widget tests to ensure functionality.
 
 ## Screenshots
-
+![image125](https://github.com/user-attachments/assets/7adcf9a1-aaf2-4f08-a0fc-b830723560ac)
 ![image 169](https://github.com/user-attachments/assets/993dfcd8-f38b-46d1-b59f-c62ce9deb23b)
 ![Screenshot 2024-08-12 154340](https://github.com/user-attachments/assets/fcc6c461-4b28-482b-8a66-b4db8a7699a6)
 ![image121](https://github.com/user-attachments/assets/9a90f8c2-3a85-4c83-82ee-6f7d7798c193)
 ![img124](https://github.com/user-attachments/assets/9e2c88ae-da54-4352-ab65-6f3fecfc9fe5)
 ![img123](https://github.com/user-attachments/assets/1d2943c5-a4a9-4ce5-bf6c-58378074e608)
 ![img122](https://github.com/user-attachments/assets/4b6ea832-4033-4704-86dd-9fba2d4b8352)
-![image125](https://github.com/user-attachments/assets/7adcf9a1-aaf2-4f08-a0fc-b830723560ac)
+
 
 ## Getting Started
 
@@ -55,8 +55,7 @@ This Flutter application allows users to browse a list of products, view product
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/product_cart_flutter_app.git
-   cd product_cart_flutter_app
+   https://github.com/madhavsingh2002/furniture_app_mobile.git
    ```
 
 2. **Install dependencies:**
