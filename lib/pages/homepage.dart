@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:product_cart/components/ProductCard.dart';
 import 'package:product_cart/components/bottomNavbar.dart';
 import 'package:product_cart/data/dummydata.dart';
+import 'package:product_cart/pages/cartpage.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -23,7 +24,13 @@ class _HomeScreenState extends State<HomeScreen> {
         actions: [
           IconButton(
             icon: const Icon(Icons.shopping_cart),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => CartPage(),
+                ),
+              );
+            },
           ),
         ],
       ),
@@ -91,7 +98,8 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             const Padding(
               padding: EdgeInsets.symmetric(vertical: 20.0),
-              child: Text('Newest', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              child: Text('Newest',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             ),
             SizedBox(
               height: 325, // Set a fixed height for the ListView
@@ -104,7 +112,8 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             const Padding(
               padding: EdgeInsets.symmetric(vertical: 20.0),
-              child: Text('Discover', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              child: Text('Discover',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             ),
             SizedBox(
               height: 325, // Set a fixed height for the ListView

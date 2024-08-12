@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:product_cart/provider/cartprovider.dart';
+import 'package:product_cart/provider/favouriteprovider.dart';
 import 'package:provider/provider.dart';
 
 class Productdetails extends StatefulWidget {
@@ -62,7 +64,9 @@ class _ProductdetailsState extends State<Productdetails> {
                     ),
                     Text(
                       product['category'],
-                      style: const TextStyle(fontSize: 14, color: Color.fromARGB(255, 100, 100, 100)),
+                      style: const TextStyle(
+                          fontSize: 14,
+                          color: Color.fromARGB(255, 100, 100, 100)),
                     ),
                     const Text('Description',
                         style: TextStyle(
@@ -71,8 +75,8 @@ class _ProductdetailsState extends State<Productdetails> {
                             fontWeight: FontWeight.bold)),
                     Text(
                       product['description'].toString(),
-                      style:
-                          const TextStyle(color: Color.fromARGB(255, 118, 118, 118)),
+                      style: const TextStyle(
+                          color: Color.fromARGB(255, 118, 118, 118)),
                     ),
                   ],
                 ),
@@ -82,8 +86,7 @@ class _ProductdetailsState extends State<Productdetails> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              decoration: const BoxDecoration(
-              color: Color(0xFFFAF2E9)),
+              decoration: const BoxDecoration(color: Color(0xFFFAF2E9)),
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -96,12 +99,12 @@ class _ProductdetailsState extends State<Productdetails> {
                         children: [
                           Container(
                             decoration: BoxDecoration(
-                              color: const Color.fromARGB(255, 53, 51, 51),
+                              border: Border.all(width: 2),
                               shape: BoxShape.circle,
                             ),
                             child: IconButton(
                               icon: Icon(Icons.remove),
-                              color: Colors.white,
+                              color: Colors.black,
                               onPressed: () {
                                 setState(() {
                                   if (_quantity > 1) {
@@ -136,37 +139,74 @@ class _ProductdetailsState extends State<Productdetails> {
                     ],
                   ),
                   SizedBox(height: 10),
-                  GestureDetector(
-                    onTap: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text('${product['name']} added to cart!'),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        decoration: const BoxDecoration(
+                          color: Color(
+                              0xFFDBCBBC), // Background color of the circle
+                          shape:
+                              BoxShape.circle, // Makes the container circular
                         ),
-                      );
-                    },
-                    child: Container(
-                      alignment: Alignment.center,
-                      height: 60,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: const Color(0xFF484330),
-                        borderRadius: BorderRadius.circular(20.0),
+                        child: IconButton(
+                          icon: const Icon(Icons.favorite_border),
+                          onPressed: () {
+                            Provider.of<FavoritesProvider>(context,
+                                    listen: false)
+                                .addFavorite(product);
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                    '${product['name']} added to Favourite!',
+                                    style:
+                                        const TextStyle(color: Colors.black)),
+                                backgroundColor:
+                                    Color.fromARGB(255, 197, 174, 148),
+                              ),
+                            );
+                          },
+                        ),
                       ),
-                      child: const Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Add to Cart',
-                            style: TextStyle(color: Colors.white),
+                      GestureDetector(
+                        onTap: () {
+                          Provider.of<CartProvider>(context, listen: false)
+                              .addItem(product);
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('${product['name']} added to cart!',
+                                  style: const TextStyle(color: Colors.black)),
+                              backgroundColor:
+                                  Color.fromARGB(255, 197, 174, 148),
+                            ),
+                          );
+                        },
+                        child: 
+                        Container(
+                          alignment: Alignment.center,
+                          height: 60,
+                          width: 300,
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF484330),
+                            borderRadius: BorderRadius.circular(20.0),
                           ),
-                          SizedBox(width: 10),
-                          Icon(
-                            Icons.arrow_forward,
-                            color: Colors.white,
+                          child: const Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.add_shopping_cart,
+                                color: Colors.white,
+                              ),
+                              SizedBox(width: 10),
+                              Text(
+                                'Add to Cart',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ],
                           ),
-                        ],
+                        ),
                       ),
-                    ),
+                    ],
                   ),
                 ],
               ),

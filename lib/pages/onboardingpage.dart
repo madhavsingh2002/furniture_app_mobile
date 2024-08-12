@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:product_cart/components/bottomNavbar.dart';
+import 'package:product_cart/pages/favouritepage.dart';
 import 'package:product_cart/pages/homepage.dart';
 import 'package:product_cart/pages/productlist.dart';
 
@@ -64,14 +65,17 @@ class OnBoardingPage extends StatelessWidget {
             GestureDetector(
               onTap: () {
                 Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (_) => const BottomNavBar(
-                    pages: [
-                      HomeScreen(),
-                      ProductListScreen(),
-                      Center(child: Icon(Icons.notifications, size: 100, color: Colors.black)),
-                      Center(child: Icon(Icons.person, size: 100, color: Colors.black)),
-                    ],
-                  )),
+                  MaterialPageRoute(
+                      builder: (_) => const BottomNavBar(
+                            pages: [
+                              HomeScreen(),
+                              ProductListScreen(),
+                              Favouritepage(),
+                              Center(
+                                  child: Icon(Icons.person,
+                                      size: 100, color: Colors.black)),
+                            ],
+                          )),
                 );
               },
               child: Container(

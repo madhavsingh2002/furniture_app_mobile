@@ -27,10 +27,14 @@ class ProductCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const Align(
+                alignment: Alignment.topRight,
+                child: Icon(Icons.favorite_border
+              )),
               Center(
                 child: Image(
                   image: AssetImage(product['image']),
-                  height: 180,
+                  height: 160,
                 ),
               ),
               Text(

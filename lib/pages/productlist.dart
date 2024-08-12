@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:product_cart/components/ProductListCard.dart';
 import 'package:product_cart/components/bottomNavbar.dart';
 import 'package:product_cart/data/dummydata.dart';
+import 'package:product_cart/pages/cartpage.dart';
 
 class ProductListScreen extends StatefulWidget {
   const ProductListScreen({super.key});
@@ -44,7 +45,13 @@ class _ProductListScreenState extends State<ProductListScreen> {
         actions: [
           IconButton(
             icon: const Icon(Icons.shopping_cart),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => CartPage(),
+                ),
+              );
+            },
           ),
         ],
         bottom: PreferredSize(

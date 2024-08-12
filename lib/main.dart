@@ -2,10 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:product_cart/pages/onboardingpage.dart';
 import 'package:product_cart/pages/splashscreen.dart';
+import 'package:product_cart/provider/cartprovider.dart';
+import 'package:product_cart/provider/favouriteprovider.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(
-    MyApp(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => CartProvider()),
+        ChangeNotifierProvider(create: (_) => FavoritesProvider()),
+      ],
+      child: const MyApp(),
+    ),
   );
 }
 
